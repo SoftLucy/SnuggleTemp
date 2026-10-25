@@ -4,6 +4,22 @@ SnuggleTemp is a local-first heating-consumption and household-heating-budget tr
 
 The project also includes optional Windows/Python tools to export a user's own Techem heating history and calculate budget estimates from local data. The Android app can be used without the Windows exporter; no hosted backend or account operated by this project is required.
 
+<p align="center">
+  <img src="app/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" alt="SnuggleTemp app icon" width="112" />
+</p>
+
+## Preview
+
+<p align="center">
+  <img src="docs/images/heating-chart-illustration.svg" alt="Illustration of the monthly heating-consumption chart with previous-year, actual, and projected lines" width="100%" />
+</p>
+
+<p align="center">
+  <img src="docs/images/feature-overview.svg" alt="SnuggleTemp features: local-first records, budget planning, and optional weather-adjusted projections" width="100%" />
+</p>
+
+*The chart is an illustration using fictional values, not a screenshot or real household data. The actual chart is rendered in the Android app.*
+
 ## Features
 
 - Monthly heating-consumption history and current-year comparison with the previous year.
