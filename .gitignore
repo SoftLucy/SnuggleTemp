@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+
+# Local credentials, exports, logs and user settings
+techem_auth.dpapi
+*.dpapi
+*.log
+techem_heating_history.csv
+techem_heating_history.json
+snuggletemp_settings.local.json
+*.env
+.env.*
+!.env.example
+
+# Personal financial documents and OCR output
+documents/
+*.pdf
+*.ocr.txt
+*.ocr.json
+
+# Flutter/Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+build/
+coverage/
+app/assets/private/*.json
+
+# IDE and OS files
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
