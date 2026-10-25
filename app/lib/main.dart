@@ -240,7 +240,7 @@ class _HomeState extends State<Home> {
       await p.setString('techemRoutePrefix', configuredRoutePrefix);
     }
     final raw = p.getString('data');
-    if (raw != null) {
+    if (raw != null && (jsonDecode(raw) as Map).isNotEmpty) {
       data.addAll(
         (jsonDecode(raw) as Map<String, dynamic>).map(
           (k, v) => MapEntry(k, (v as num).toDouble()),
@@ -260,10 +260,7 @@ class _HomeState extends State<Home> {
         }
       } catch (_) {}
     }
-    final savedSchedule = p.getString('paymentSchedule');
-    final rawSchedule = savedSchedule == null
-        ? (privateSettings?['paymentSchedule'] as List?)
-        : (jsonDecode(savedSchedule) as List);
+    final rawSchedule = privateSettings?['paymentSchedule'] as List?;
     if (rawSchedule != null && rawSchedule.isNotEmpty) {
       paymentSchedule
         ..clear()
@@ -274,35 +271,19 @@ class _HomeState extends State<Home> {
           ),
         );
     }
-    other =
-        p.getDouble('other') ??
-        (privateSettings?['other'] as num?)?.toDouble() ??
-        0;
-    fixed =
-        p.getDouble('fixed') ??
-        (privateSettings?['fixed'] as num?)?.toDouble() ??
-        0;
-    variable =
-        p.getDouble('variable') ??
-        (privateSettings?['variable'] as num?)?.toDouble() ??
-        0;
-    baseKwh =
-        p.getDouble('baseKwh') ??
-        (privateSettings?['baseKwh'] as num?)?.toDouble() ??
-        0;
+    other = (privateSettings?['other'] as num?)?.toDouble() ?? p.getDouble('other') ?? 0;
+    fixed = (privateSettings?['fixed'] as num?)?.toDouble() ?? p.getDouble('fixed') ?? 0;
+    variable = (privateSettings?['variable'] as num?)?.toDouble() ?? p.getDouble('variable') ?? 0;
+    baseKwh = (privateSettings?['baseKwh'] as num?)?.toDouble() ?? p.getDouble('baseKwh') ?? 0;
     checked = p.getString('checked');
     lat = p.getDouble('lat');
     lon = p.getDouble('lon');
     locationAddress = p.getString('locationAddress') ?? '';
-    final b = p.getString('bills');
-    if (b != null) {
-      bills.addAll((jsonDecode(b) as List).map((e) => Bill.from(e)));
-    } else if (privateSettings?['bills'] is List) {
-      bills.addAll(
-        (privateSettings!['bills'] as List).map(
-          (e) => Bill.from(e as Map<String, dynamic>),
-        ),
-      );
+    if (privateSettings?['bills'] is List) {
+      bills.addAll((privateSettings!['bills'] as List).map((e) => Bill.from(Map<String, dynamic>.from(e as Map))));
+    } else {
+      final b = p.getString('bills');
+      if (b != null) bills.addAll((jsonDecode(b) as List).map((e) => Bill.from(e)));
     }
     // Migrate new statement fields and add known historic years without overwriting user edits.
     if (privateSettings?['bills'] is List) {

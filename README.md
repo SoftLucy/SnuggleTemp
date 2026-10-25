@@ -1,4 +1,4 @@
-﻿# SnuggleTemp
+# SnuggleTemp
 
 SnuggleTemp is a local-first heating-consumption and household-heating-budget tracker. It includes an Android app built with Flutter, monthly consumption charts, an editable advance-payment schedule, annual cost statements, break-even and buffer targets, and an optional weather-adjusted projection.
 
@@ -11,8 +11,10 @@ The project also includes optional Windows/Python tools to export a user's own T
 ## Preview
 
 <p align="center">
-  <img src="docs/images/heating-chart-illustration.svg" alt="Illustration of the monthly heating-consumption chart with previous-year, actual, and projected lines" width="100%" />
+  <img src="docs/images/snuggletemp-current.png" alt="Screenshot of the SnuggleTemp Android app running on a Pixel device" width="360" />
 </p>
+
+The screenshot above is captured from the running Android app. The diagrams below are feature illustrations, not app screenshots.
 
 <p align="center">
   <img src="docs/images/feature-overview.svg" alt="SnuggleTemp features: local-first records, budget planning, and optional weather-adjusted projections" width="100%" />
